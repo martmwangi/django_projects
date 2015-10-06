@@ -6,7 +6,7 @@ from .forms import StudentForm
 def index(request):
     form = StudentForm()
     context = {
-        "hello_message":"Hello Moringa"
+        "hello_message":"Hello Moringa",
         "form": form
 
     }

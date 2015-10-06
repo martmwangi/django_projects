@@ -1,15 +1,14 @@
 <html>
-<p>MAneno ya 2sec</p>
-<p>{{hello_message}}</p>
-<p>{{request.user}}</p>
+<p>Moringa School</p>
+<form action="" method="" accept-charset="utf-8">
+ {{form.as_p}}
+    <p><input type="submit" value="Register"     </p>
+    </form>
+
 
 </html>
 
-def index(request):
-    context = {
-          "hello_message":"Hello Moringa"
-}
-return render(request,'index.html',context)
+
 
 
 
