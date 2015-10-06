@@ -1,4 +1,16 @@
 <html>
 <p>MAneno ya 2sec</p>
+<p>{{hello_message}}</p>
+<p>{{request.user}}</p>
 
 </html>
+
+def index(request):
+    context = {
+          "hello_message":"Hello Moringa"
+}
+return render(request,'index.html',context)
+
+
+
+

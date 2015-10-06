@@ -8,8 +8,12 @@ class StudentForm(forms.ModelForm):
         exclude = ['last_update']
         model = Student
     def clean_age(self):
-        age = self.cleaned_data.get('get')
-        if age >120
+        age = self.cleaned_data.get('age')
+        if age > 120:
             raise forms.ValidationError("You may be too old for this class")
+        elif age < 10:
+            raise forms.ValidationError("Child dont play with me: ")
+
+
 
         return age
