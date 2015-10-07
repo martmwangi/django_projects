@@ -17,3 +17,30 @@ class StudentForm(forms.ModelForm):
 
 
         return age
+
+
+
+
+class FeedbackForm(forms.Form):
+    full_name = forms.CharField()
+    email = forms.EmailField()
+    message = forms.CharField()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
