@@ -31,7 +31,14 @@ def index(request):
     return HttpResponse("Success")
 
 def feedback(request):
-    form = FeedbackForm()
+    form = FeedbackForm(request.POST or None)
+    if form.is_valid():
+        from_email = form.cleaned_data.get('email')
+        full_name = form.cleaned_data.get('full_name')
+        message = form.cleaned_datat.get('message')
+        prepared_message = "You have feedback {} saying '{}'".format('full_name','message')
+        send_mail('New Feedback Given', prepared_message, from_email,
+    ['to@example.com'], fail_silently=False)
     context = {
         "form":form
     }
