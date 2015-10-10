@@ -1,12 +1,14 @@
 from django import forms
 from .models import Student
 
+
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
 #        fields = ['full_name','email','age']
         exclude = ['last_update']
         model = Student
+
     def clean_age(self):
         age = self.cleaned_data.get('age')
         if age > 120:
@@ -14,6 +16,7 @@ class StudentForm(forms.ModelForm):
         elif age < 10:
             raise forms.ValidationError("Child dont play with me: ")
         return age
+
 
 class FeedbackForm(forms.Form):
     full_name = forms.CharField()
@@ -26,21 +29,3 @@ class FeedbackForm(forms.Form):
             message == 'Clean'
         print(message)
         return message
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
