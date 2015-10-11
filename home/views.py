@@ -22,7 +22,10 @@ def index(request):
             full_name = "Developer"
         instance.full_name = full_name
         instance.save()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92d19923834335cd4d60a42da4bcd36bcf9fea2a
         context = {
             "hello_message": "Student Saved"
 
@@ -40,8 +43,13 @@ def feedback(request):
         message = form.cleaned_data.get('message')
         prepared_message = "You have feedback {} saying '{}'".format
         ('full_name', 'message')
+<<<<<<< HEAD
         # send_mail('New Feedback Given', prepared_message, from_email
         #          ['martmwangi86@gmail.com'], fail_silently=False)
+=======
+        send_mail('New Feedback Given', prepared_message, from_email,
+                  ['martmwangi86@gmail.com'], fail_silently=False)
+>>>>>>> 92d19923834335cd4d60a42da4bcd36bcf9fea2a
     context = {
         "form": form
     }
