@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import StudentForm
 from .forms import FeedbackForm
 from django.core.mail import send_mail
+from .models import Student
 
 # Create your views here.
 
@@ -22,10 +23,7 @@ def index(request):
             full_name = "Developer"
         instance.full_name = full_name
         instance.save()
-<<<<<<< HEAD
 
-=======
->>>>>>> 92d19923834335cd4d60a42da4bcd36bcf9fea2a
         context = {
             "hello_message": "Student Saved"
 
@@ -43,14 +41,21 @@ def feedback(request):
         message = form.cleaned_data.get('message')
         prepared_message = "You have feedback {} saying '{}'".format
         ('full_name', 'message')
-<<<<<<< HEAD
+
         # send_mail('New Feedback Given', prepared_message, from_email
         #          ['martmwangi86@gmail.com'], fail_silently=False)
-=======
+
         send_mail('New Feedback Given', prepared_message, from_email,
                   ['martmwangi86@gmail.com'], fail_silently=False)
->>>>>>> 92d19923834335cd4d60a42da4bcd36bcf9fea2a
+
     context = {
         "form": form
     }
     return render(request, 'feedback.html', context)
+
+
+def students(request):
+    search_term = request.GET['search']
+    students = Student.objects.all().filter(full_name__contains=search_term)
+    context = {'students': students}
+    return render(request, 'students.html', context)

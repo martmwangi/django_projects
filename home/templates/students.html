@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Feedback form</title>
+    <title>Registered students</title>
 
     <!-- Bootstrap -->
-    <link href='{% static "css/bootstrap.min.css"%}'   rel="stylesheet">
+    <link href='{% static "css/bootstrap.min.css"%}' rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,11 +17,38 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-    <form action="" method="post" accept-charset="utf-8">
-    {%csrf_token%}
- {{form.as_p}}
-        <p><input type="submit" value="Give Feedback"</p>
-    </form>
+  <body>
+
+    <table class="table">
+      <tr>
+          <th></th>
+          <th>full_name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Interests</th>
+          <th>Last updated<th>
+          <th>Registered date<th>
+      </tr>
+
+        {% for Student in students %}
+          <tr>
+            <td>{{forloop.counter}}<td>
+            <td>{{Student.full_name}}</td>
+            <td>{{Student.age}}</td>
+            <td>{{Student.email}}</td>
+            <td>{{Student.interests}}</td>
+            <td>{{Student.last_update | timesince}}<td>
+            <td>{{Student.registered_date}}<td>
+          </tr>
+        {% endfor %}
+
+
+    </table>
+
+
+
+  </body>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src='{% static "js/bootstrap.min.js"%}'></script>

@@ -16,20 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
-<<<<<<< HEAD
-
-=======
 from django.conf.urls.static import static
->>>>>>> 92d19923834335cd4d60a42da4bcd36bcf9fea2a
+
 
 urlpatterns = [
     url(r'^$', 'home.views.index', name='home'),
     url(r'^feedback/$', 'home.views.feedback', name='feedback'),
+    url(r'^students/$', 'home.views.students', name='students'),
     url(r'^admin/', include(admin.site.urls)),
 ]
-<<<<<<< HEAD
-urlpatterns += static(settings.STATIC_URL, document_root=STATIC_ROOOT)
-=======
-
-urlpatterns += static(settings.STATIC_URL, document_root=STATIC_ROOT)
->>>>>>> 92d19923834335cd4d60a42da4bcd36bcf9fea2a
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
