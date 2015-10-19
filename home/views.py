@@ -2,13 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import StudentForm
 from .forms import FeedbackForm
-from django.core.mail import send_mail
 from .models import Student
+from django.core.mail import send_mail
+
 
 # Create your views here.
-
-
 def index(request):
+    context = {}
+    return render(request, 'home.html', context)
+
+
+def register(request):
     form = StudentForm(request.POST or None)
     context = {
         "hello_message": "Register new Student",
@@ -55,7 +59,7 @@ def feedback(request):
 
 
 def students(request):
-    search_term = request.GET['search']
+    search_term = request.GET.get('search', default='')
     students = Student.objects.all().filter(full_name__contains=search_term)
     context = {'students': students}
     return render(request, 'students.html', context)

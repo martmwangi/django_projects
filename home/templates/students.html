@@ -1,33 +1,16 @@
-<html>
-<head>
-  {% load staticfiles %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Registered students</title>
-
-    <!-- Bootstrap -->
-    <link href='{% static "css/bootstrap.min.css"%}' rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-
+{% extends "base.html" %}
+{% block content %}
+<p>Hi, {{request.user}}</p>
     <table class="table">
       <tr>
+          <th></th>
           <th></th>
           <th>full_name</th>
           <th>Age</th>
           <th>Email</th>
           <th>Interests</th>
           <th>Last updated<th>
-          <th>Registered date<th>
+
       </tr>
 
         {% for Student in students %}
@@ -38,20 +21,13 @@
             <td>{{Student.email}}</td>
             <td>{{Student.interests}}</td>
             <td>{{Student.last_update | timesince}}<td>
-            <td>{{Student.registered_date}}<td>
+
           </tr>
         {% endfor %}
 
 
     </table>
-
-
-
-  </body>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src='{% static "js/bootstrap.min.js"%}'></script>
-
-
-</html>
+{% endblock %}
+{%block students_active %}
+class="active"
+{% endblock %}

@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.mandrillapp.com'
 EMAIL_HOST_USER = 'martmwangi86@gmail.com'
-EMAIL_HOST_PASSWORD = 'Oiykum3lVFRbGgsWbMur8Q'
+EMAIL_HOST_PASSWORD = 'CVYIxt2RNC_KBB8PMcI8TA'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -41,8 +41,11 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
+    'crispy_forms',
     'home',
 )
 
@@ -62,7 +65,8 @@ ROOT_URLCONF = 'first_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates"),
+                 os.path.join(BASE_DIR, "templates", "bootstrap")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,3 +115,9 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "assets", "static_prod")
 STATICFILES_DIRS = (
     os.path.join(os.path.dirname(BASE_DIR), "assets", "static"),
 )
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/students'
+
+SITE_ID = 1
